@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="JRebel Project data">
+    <option name="privateKey" value="3082025c02010002818100982b1f7eb12788ffd87f4285789b845600a236032b69be5b64100b0b63fb9d224a05d58be1f3fcfb1a70ebd8aed979398af0c0c9a1312b4c62f933df64b69ab7aff0985618ed0e180d5dee9ec77d8fe84d933cb1779722c52e8d35459aff4757f6a9c3e17258b5ced7eb8bd7c95fb123312f9aa637fc17f738eae18ab85d6ced02030100010281805052a3035b3c054317e2c518733b9435598c467a91d5f59784503ba43d98b9af39e7ae7b72403a8fc9bb45a351589676db728e316096f5c612907ce334e476f2229302941fff764dd1bdec9d5b863951354c3eb8bc39326150b710b9dafea2f22a8e220cf29930ea13f7045a49d3ee7aa2e7ebc0e3d9ed558222c4df6956bdf9024100d0044d860c6f27abb08ee4adf804e34812086f8048477fa62f8c34ff9644b1491ff11dc1991967ad3be181a696718ced89fad5792b9829f9996a67d7260b511b024100bb44e4906b1187c7ee6e2b249872777f485cfe9e2325519cbeea7e77ed4fab68a67ff59f95b6736b253e88b1f1ed077699e9504ad81fe61f042f996e8e7122970240117dfb22e592c74c39b99a6342b2ee85d5f65da1f4f2063aec4ea6fa43219da2df8bc00bd29aff4be2f83095d89acdd5ffbf570a2c6f4c404ff551ac16e7e6b70241009ca2630ae883212ef91eecb70f4baee7a77f20f8e42cb2b688795a8eb4cf8e6f59d46d7dad9b8dae70d87d3d593d08a10adb3b6d5e984fc2619dee97aa4cb6c102407904dba6575814a4f840508d79d15664b0168c450012b2bc9919236df1bb6d9ceb9459b2fdaa4f432ce1e5205016081ce4c945ab0af1d85f831264b7187c9852" />
+    <option name="publicKey" value="30818902818100982b1f7eb12788ffd87f4285789b845600a236032b69be5b64100b0b63fb9d224a05d58be1f3fcfb1a70ebd8aed979398af0c0c9a1312b4c62f933df64b69ab7aff0985618ed0e180d5dee9ec77d8fe84d933cb1779722c52e8d35459aff4757f6a9c3e17258b5ced7eb8bd7c95fb123312f9aa637fc17f738eae18ab85d6ced0203010001" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mean101.iml" filepath="$PROJECT_DIR$/mean101.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+</project>
+
