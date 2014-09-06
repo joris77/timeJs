@@ -5,8 +5,9 @@ angular.module('mean101App')
     .controller('MainCtrl', function ($scope, $http, $log) {
 
         var dateFormat = 'YYYY-MM-DD';
-        var timeFormat = "hh:mm";
+        var timeFormat = "HH:mm";
         var dateTimeFormat = dateFormat + timeFormat;
+        $scope.dateTimeFormat = dateTimeFormat;
         var currentTimeSlot;
 
         function getDatePartFromDate(date) {
@@ -47,16 +48,37 @@ angular.module('mean101App')
 
         setCurrent();
 
+        function setRecent() {
+            $http.get('/api/timeSlots/recent').success(function (data, status) {
+                $scope.recent = data;
+            });
+        }
+
+        setRecent();
+
 
         $scope.addTime = function () {
             var f = $scope.form;
             currentTimeSlot.beginDate = moment(f.beginDate + f.beginTime, dateTimeFormat);
             currentTimeSlot.endDate = getDate(f.endDate, f.endTime);
             if (currentTimeSlot._id) {
-                $http.put('/api/timeSlots/' + currentTimeSlot._id, currentTimeSlot).success(setCurrent);
+                $http.put('/api/timeSlots/' + currentTimeSlot._id, currentTimeSlot).success(function(){
+                    setCurrent();
+                    setRecent();
+                });
             } else {
-                $http.post('/api/timeSlots', currentTimeSlot).success(setCurrent);
+                $http.post('/api/timeSlots', currentTimeSlot).success(function(){
+                    setCurrent();
+                    setRecent();
+                });
             }
 
         };
+
+        $scope.delete = function(id){
+            $http.delete('/api/timeSlots/' + id).success(function(){
+                setCurrent();
+                setRecent();
+            });
+        }
     });

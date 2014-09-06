@@ -23,6 +23,18 @@ exports.index = function (req, res) {
     });
 };
 
+exports.recent = function(req,res) {
+    var weekAgo = moment().subtract('days', 7)
+    TimeSlot.find({beginDate : { '$gte' : weekAgo}}).sort({ beginDate : -1}).exec(
+        function (err, slots) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, slots);
+        }
+    );
+}
+
 exports.current = function (req, res) {
     TimeSlot.find({ endDate: { $exists: false } }, function (err, openTimeSlots) {
         var currentTimeSlot = openTimeSlots[0];
