@@ -5,8 +5,8 @@ angular.module('mean101App')
     .controller('MainCtrl', function ($scope, $http, $log) {
 
         var dateFormat = 'YYYY-MM-DD';
-        var timeFormat = "HH:mm";
-        var dateTimeFormat = dateFormat + timeFormat;
+        var timeFormat = 'HH:mm';
+        var dateTimeFormat = dateFormat + ' ' + timeFormat;
         $scope.dateTimeFormat = dateTimeFormat;
         var currentTimeSlot;
 
@@ -19,7 +19,7 @@ angular.module('mean101App')
         }
 
         function getDate(date, time) {
-            return date && time ? moment(date + time, dateTimeFormat) : undefined;
+            return date && time ? date + ' ' + time : undefined;
         }
 
 
@@ -30,37 +30,44 @@ angular.module('mean101App')
                 if (status === 200) {
                     currentTimeSlot = data;
                     $scope.form = {
-                        beginDate: getDatePartFromDate(currentTimeSlot.beginDate),
+                        date: getDatePartFromDate(currentTimeSlot.beginDate),
                         beginTime: getTimeFromFromDate(currentTimeSlot.beginDate),
                         endDate: getDatePartFromDate(now),
                         endTime: getTimeFromFromDate(now)
-                    }
+                    };
                 } else {
                     currentTimeSlot = {};
                     $scope.form = {
-                        beginDate: getDatePartFromDate(now),
+                        date: getDatePartFromDate(now),
                         beginTime: getTimeFromFromDate(now)
-                    }
+                    };
                 }
-                $log.log('Form ' + JSON.stringify($scope.form));
             });
         }
 
         setCurrent();
 
         function setRecent() {
-            $http.get('/api/timeSlots/recent').success(function (data, status) {
+            $http.get('/api/timeSlots/recent').success(function (data) {
                 $scope.recent = data;
             });
         }
 
         setRecent();
 
+        $scope.clickHeading = function(date){
+            if($scope.openDate == date){
+                $scope.openDate = null;
+            }else{
+                $scope.openDate = date;
+            }
+        }
+
 
         $scope.addTime = function () {
             var f = $scope.form;
-            currentTimeSlot.beginDate = moment(f.beginDate + f.beginTime, dateTimeFormat);
-            currentTimeSlot.endDate = getDate(f.endDate, f.endTime);
+            currentTimeSlot.beginDate = getDate(f.date, f.beginTime);
+            currentTimeSlot.endDate = getDate(f.date, f.endTime);
             if (currentTimeSlot._id) {
                 $http.put('/api/timeSlots/' + currentTimeSlot._id, currentTimeSlot).success(function(){
                     setCurrent();
@@ -80,5 +87,5 @@ angular.module('mean101App')
                 setCurrent();
                 setRecent();
             });
-        }
+        };
     });

@@ -461,7 +461,8 @@ module.exports = function (grunt) {
                '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
                '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js']
             ]
-        }
+        },
+          "test": "node --debug ./node_modules/.bin/grunt test"
       },
 
       // Inject component less into app.less

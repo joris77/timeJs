@@ -6,7 +6,7 @@ var User = require('./user.model');
 var user;
 
 describe('User Model', function() {
-  before(function(done) {
+  beforeEach(function(done) {
     user = new User({
       provider: 'local',
       name: 'Fake User',

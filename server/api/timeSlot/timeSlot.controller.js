@@ -1,16 +1,8 @@
-/**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /things              ->  index
- * POST    /things              ->  create
- * GET     /things/:id          ->  show
- * PUT     /things/:id          ->  update
- * DELETE  /things/:id          ->  destroy
- */
-
 'use strict';
 
 var _ = require('lodash');
 var TimeSlot = require('./timeslot.model');
+var service = require('./timeslot.service');
 var moment = require('moment');
 
 // Get list of things
@@ -23,14 +15,15 @@ exports.index = function (req, res) {
     });
 };
 
+
 exports.recent = function(req,res) {
-    var weekAgo = moment().subtract('days', 7)
+    var weekAgo = moment().subtract('days',10)
     TimeSlot.find({beginDate : { '$gte' : weekAgo}}).sort({ beginDate : -1}).exec(
         function (err, slots) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.json(200, slots);
+            return res.json(200, service.groupByDay(slots));
         }
     );
 }
